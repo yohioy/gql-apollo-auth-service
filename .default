@@ -1,0 +1,11 @@
+HOST='localhost'
+PORT='4002'
+DB_REGION=localhost
+DB_ENDPOINT=http://localhost:12008
+API_AUTH_KEY=ABCXYZ
+
+############
+## Cognito
+COGNITO_USER_POOL_ID=
+COGNITO_CLIENT_ID=
+COGNITO_REGION=

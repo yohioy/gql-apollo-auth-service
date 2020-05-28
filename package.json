@@ -1,0 +1,57 @@
+{
+  "name": "@masteryo/gql-apollo-auth-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:yohioy/gql-apollo-auth-service.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prebuild": "rm -rf ./dist",
+    "start": "ts-node src/index.ts"
+  },
+  "author": "yohantha@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/federation": "^0.15.1",
+    "@graphql-modules/core": "^0.7.17",
+    "@graphql-modules/di": "^0.7.17",
+    "@hapi/boom": "^9.1.0",
+    "@hapi/glue": "^7.0.0",
+    "@hapi/hapi": "^18.4.1",
+    "@masteryo/masteryo-cognito": "^1.0.0",
+    "@masteryo/masteryo-dynamodb-mapper": "^1.0.2",
+    "@masteryo/masteryo-gql-shared-models": "^1.0.1",
+    "@masteryo/masteryo-hapi-cognito-auth": "^1.0.7",
+    "@masteryo/masteryo-utils": "^1.0.2",
+    "apollo-server-hapi": "^2.12.0",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.0.0",
+    "graphql-import": "^1.0.2",
+    "reflect-metadata": "^0.1.13",
+    "safe-json-stringify": "^1.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@types/dotenv": "^6.1.1",
+    "@types/hapi": "^18.0.2",
+    "@types/hapi__glue": "^6.1.0",
+    "@types/hapi__joi": "^16.0.2",
+    "@types/node": "^12.12.42",
+    "@types/safe-json-stringify": "^1.1.0",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "tslint-config-semistandard": "^8.0.1",
+    "typescript": "^3.9.3"
+  }
+}
