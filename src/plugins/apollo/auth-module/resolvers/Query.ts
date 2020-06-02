@@ -28,7 +28,6 @@ export const Query: IQuery = {
             ClientId: COGNITO_CLIENT_ID
         };
 
-        console.log(cognitoOptions);
         const cognito = new Cognito(cognitoOptions);
 
         let authUserResponse;

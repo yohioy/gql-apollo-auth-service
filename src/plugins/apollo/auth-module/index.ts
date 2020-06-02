@@ -35,7 +35,7 @@ export const AuthModule = new GraphQLModule({
     }
 
     if(options.apiAuthKey !== apiKey) {
-      throw new AuthenticationError('No Auth credentials');
+      throw new AuthenticationError('Invalid API Key');
     }
 
     return true;
