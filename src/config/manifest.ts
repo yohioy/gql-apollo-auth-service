@@ -13,16 +13,12 @@ export default {
   register: {
     plugins: [
       {
-        plugin: '@masteryo/masteryo-hapi-cognito-auth',
+        plugin: '../plugins/apollo',
         options: {
           apiAuthKey: process.env.API_AUTH_KEY,
           cognitoUserPoolId: process.env.COGNITO_USER_POOL_ID,
-          cognitoClientId: process.env.COGNITO_CLIENT_ID,
-          cognitoRegion: process.env.COGNITO_REGION
+          cognitoClientId: process.env.COGNITO_CLIENT_ID
         }
-      },
-      {
-        plugin: '../plugins/apollo'
       }
     ]
   }

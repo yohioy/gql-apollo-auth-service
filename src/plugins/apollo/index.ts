@@ -3,9 +3,9 @@ import { ApolloServer } from 'apollo-server-hapi';
 import { buildFederatedSchema } from '@apollo/federation';
 import { Server } from '@hapi/hapi';
 import { AuthModule } from './auth-module';
-import Boom from "@hapi/boom";
 
-const register = async(server: Server) => {
+
+const register = async(server: Server, options) => {
 
   const apolloServer = new ApolloServer({
     schema: buildFederatedSchema([AuthModule]),
