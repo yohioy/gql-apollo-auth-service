@@ -30,6 +30,7 @@ export const AuthModule = new GraphQLModule({
 
     console.log('session',session);
     console.log('sessionServer',session.request.server.registrations);
+    console.log('sessionServer',session.request.payload);
     console.log('currentContext',currentContext);
     const apiKey = session.request.headers['x-api-key'];
 
