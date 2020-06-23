@@ -17,7 +17,9 @@ export default {
         options: {
           apiAuthKey: process.env.API_AUTH_KEY,
           cognitoUserPoolId: process.env.COGNITO_USER_POOL_ID,
-          cognitoClientId: process.env.COGNITO_CLIENT_ID
+          cognitoClientId: process.env.COGNITO_CLIENT_ID,
+          dbRegion:process.env.DB_REGION,
+          dbEndpoint:process.env.DB_ENDPOINT
         }
       }
     ]

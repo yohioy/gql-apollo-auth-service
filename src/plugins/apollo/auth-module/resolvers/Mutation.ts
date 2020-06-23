@@ -1,7 +1,7 @@
-import { ModuleContext } from '@graphql-modules/core';
-import { AuthProvider } from '../providers';
+import { ModuleContext, ModuleSessionInfo } from '@graphql-modules/core';
 import { responseType } from '@masteryo/masteryo-utils';
 import { Cognito } from '@masteryo/masteryo-cognito';
+import { UsersProvider } from '../../../../masteryo-gql-core-providers/users';
 
 interface IUserSignup {
     password: string;
@@ -22,20 +22,18 @@ export interface IMutation {
 }
 
 export const Mutation: IMutation = {
-    signUp: async (_: any, args: IUserSignup, context: ModuleContext): Promise<any> => {
-        const {
-            COGNITO_USER_POOL_ID,
-            COGNITO_CLIENT_ID
-        } = process.env;
+    signUp: async (_: any, args: IUserSignup, context: ModuleContext, sessionInfo: ModuleSessionInfo): Promise<any> => {
 
-        const authProvider = context.injector.get(AuthProvider);
+        const serverOptions: any = sessionInfo.session.request.serverOptions;
 
-        const options: any = {
-            UserPoolId: COGNITO_USER_POOL_ID,
-            ClientId: COGNITO_CLIENT_ID
+        const usersProvider = context.injector.get(UsersProvider);
+
+        const cognitoOptions: any = {
+            UserPoolId: serverOptions.cognitoUserPoolId,
+            ClientId: serverOptions.cognitoClientId
         };
 
-        const cognito = new Cognito(options);
+        const cognito = new Cognito(cognitoOptions);
 
         const cognitoUserAttributes = {
             given_name: args.firstName,
@@ -71,7 +69,7 @@ export const Mutation: IMutation = {
 
         // Add user to Database
         try {
-            await authProvider.createUser(dbRegisterUser);
+            await usersProvider.createUser(dbRegisterUser);
             return responseType.success;
         } catch (e) {
             console.log(responseType.failed, e);
@@ -79,25 +77,22 @@ export const Mutation: IMutation = {
         }
 
     },
-    verifyAccount: async (_: any, args: IUserVerify, context: ModuleContext) => {
+    verifyAccount: async (_: any, args: IUserVerify, context: ModuleContext, sessionInfo: ModuleSessionInfo) => {
 
-        const {
-            COGNITO_USER_POOL_ID,
-            COGNITO_CLIENT_ID
-        } = process.env;
+        const serverOptions: any = sessionInfo.session.request.serverOptions;
 
-        const authProvider = context.injector.get(AuthProvider);
+        const usersProvider = context.injector.get(UsersProvider);
 
         const code = args.code;
         const email = args.email;
         const password = args.password;
 
-        const options: any = {
-            UserPoolId: COGNITO_USER_POOL_ID,
-            ClientId: COGNITO_CLIENT_ID
+        const cognitoOptions: any = {
+            UserPoolId: serverOptions.cognitoUserPoolId,
+            ClientId: serverOptions.cognitoClientId
         };
 
-        const cognito = new Cognito(options);
+        const cognito = new Cognito(cognitoOptions);
 
         // Confirm Registration
         try {
@@ -117,7 +112,7 @@ export const Mutation: IMutation = {
 
         // Update User status
         try {
-            await authProvider.updateVerifiedUser(authUserResponse.sub, 'CONFIRMED');
+            await usersProvider.updateVerifiedUser(authUserResponse.sub, 'CONFIRMED');
             return { ...responseType.success, ...{ token:authUserResponse.accessToken } };
         } catch (e) {
             console.log(responseType.failed, e);

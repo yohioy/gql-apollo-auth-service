@@ -1,15 +1,17 @@
-import {ModuleConfig} from "@graphql-modules/core";
-import {Inject, Injectable} from "@graphql-modules/di";
+import { ModuleSessionInfo } from "@graphql-modules/core";
+import { Injectable, ProviderScope } from "@graphql-modules/di";
 import { UsersModel, IUser } from './users.model';
 
+@Injectable({
+    scope: ProviderScope.Session,
+})
 
-@Injectable()
 export class UsersProvider {
 
-    private mapper;
+    protected mapper;
 
-    constructor(@Inject(ModuleConfig) private config) {
-        this.mapper = this.config.mapper;
+    constructor(private moduleSessionInfo: ModuleSessionInfo) {
+        this.mapper = moduleSessionInfo.session.request.dataMapper;
     }
 
     async getUsers () {

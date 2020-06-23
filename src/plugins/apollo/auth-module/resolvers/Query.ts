@@ -1,4 +1,4 @@
-import { ModuleContext } from '@graphql-modules/core';
+import { ModuleContext, ModuleSessionInfo } from '@graphql-modules/core';
 import { responseType } from '@masteryo/masteryo-utils';
 import { Cognito } from '@masteryo/masteryo-cognito';
 import { UsersProvider } from '../../../../masteryo-gql-core-providers/users';
@@ -15,18 +15,16 @@ interface IUserSignin {
 
 
 export const Query: IQuery = {
-    signIn: async (_: any, args: IUserSignin, context: ModuleContext): Promise<any> => {
-        const {
-            COGNITO_USER_POOL_ID,
-            COGNITO_CLIENT_ID
-        } = process.env;
+    signIn: async (parent: any, args: IUserSignin, context: ModuleContext, sessionInfo: ModuleSessionInfo): Promise<any> => {
+
+        const serverOptions: any = sessionInfo.session.request.serverOptions;
 
         const email = args.email;
         const password = args.password;
 
         const cognitoOptions: any = {
-            UserPoolId: COGNITO_USER_POOL_ID,
-            ClientId: COGNITO_CLIENT_ID
+            UserPoolId: serverOptions.cognitoUserPoolId,
+            ClientId: serverOptions.cognitoClientId
         };
 
         const cognito = new Cognito(cognitoOptions);

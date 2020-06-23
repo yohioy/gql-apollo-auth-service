@@ -1,25 +1,44 @@
 import 'reflect-metadata';
-import { ApolloServer } from 'apollo-server-hapi';
+import {ApolloServer, AuthenticationError} from 'apollo-server-hapi';
 import { buildFederatedSchema } from '@apollo/federation';
 import { Server } from '@hapi/hapi';
 import { AuthModule } from './auth-module';
+import { dataMapper } from '@masteryo/masteryo-dynamodb-mapper';
 
-
-const register = async(server: Server, options) => {
+const register = async(server: Server, options): Promise<void> => {
 
   const apolloServer = new ApolloServer({
     schema: buildFederatedSchema([AuthModule]),
-    context: session => session,
+    context: async (session: { request }) => {
+
+      const apiKey = session.request.headers['x-api-key'];
+
+      if (!apiKey) {
+        throw new AuthenticationError('No Auth credentials');
+      }
+
+      if(options.apiAuthKey !== apiKey) {
+        throw new AuthenticationError('Invalid API Key');
+      }
+
+      // Add plugin options
+      session.request.serverOptions =  options;
+
+      // Add Data mapper
+      session.request.dataMapper = dataMapper({
+        region: options.dbRegion,
+        endpoint: options.dbEndpoint
+      });
+
+      return session;
+    },
     formatError: (err) => {
       // Don't give the specific errors to the client.
       if (err) {
-        //return Boom.badRequest(`Internal server error`,err);
         console.log(err);
         return new Error('Internal server error');
       }
 
-      // Otherwise return the original error.  The error can also
-      // be manipulated in other ways, so long as it's returned.
       return err;
     }
   });
