@@ -4,7 +4,7 @@ import { create } from './config/server';
 const init = async () => {
     const server = await create(manifest);
     await server.start();
-    console.log(`Server running on ${server.info.uri}`);
+    console.log(`Server running on ${server.info.uri}/graphql`);
 };
 
 process.on('unhandledRejection', (err) => {

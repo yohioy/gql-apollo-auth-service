@@ -22,7 +22,7 @@ const register = async(server: Server, options): Promise<void> => {
       }
 
       // Add plugin options
-      session.request.serverOptions =  options;
+      session.request.serverOptions = options;
 
       // Add Data mapper
       session.request.dataMapper = dataMapper({

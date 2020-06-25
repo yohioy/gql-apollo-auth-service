@@ -51,7 +51,7 @@ export class UsersProvider {
         user.firstName = data.firstName;
         user.createdDate = data.createdDate;
         user.modifiedDate = data.modifiedDate;
-        user.groupId = data.groupId;
+        user.group = data.group;
         user.userStatus = data.userStatus;
         user.verificationStatus = data.verificationStatus;
 

@@ -62,7 +62,7 @@ export const Mutation: IMutation = {
             firstName: args.firstName,
             createdDate: Date.now(),
             modifiedDate: Date.now(),
-            groupId: '1',
+            group: 'admin',
             userStatus: '1',
             verificationStatus: 'UNCONFIRMED'
         };

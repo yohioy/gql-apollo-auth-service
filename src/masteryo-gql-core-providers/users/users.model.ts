@@ -7,7 +7,7 @@ export interface IUser {
     firstName: string | undefined;
     createdDate: number | undefined;
     modifiedDate: number | undefined;
-    groupId: string | undefined;
+    group: string | undefined;
     userStatus: string | undefined;
     verificationStatus: string | undefined;
 }
@@ -16,7 +16,7 @@ export class UsersModel implements IUser {
     id;
     userStatus;
     firstName;
-    groupId;
+    group;
     createdDate;
     modifiedDate;
     verificationStatus;
@@ -44,7 +44,7 @@ Object.defineProperties(UsersModel.prototype, {
                     userStatusIndex: 'HASH'
                 }
             },
-            groupId: { type: 'String' },
+            group: { type: 'String' },
             createDate: { type: 'Date' },
             modifiedDate: { type: 'Date' },
             verificationStatus: { type: 'String' }
