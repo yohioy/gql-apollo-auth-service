@@ -1,5 +1,5 @@
 HOST='localhost'
-PORT='4002'
+PORT='4022'
 DB_REGION=localhost
 DB_ENDPOINT=http://localhost:12008
 API_AUTH_KEY=ABCXYZ
