@@ -1,7 +1,7 @@
 import { ModuleContext, ModuleSessionInfo } from '@graphql-modules/core';
 import { responseType } from '@masteryo/masteryo-utils';
 import { Cognito } from '@masteryo/masteryo-cognito';
-import { UsersProvider } from '../../../../masteryo-gql-core-providers/users';
+import { UsersProvider } from '@masteryo/masteryo-gql-core-providers';
 
 interface IUserSignup {
     password: string;
@@ -26,7 +26,7 @@ export const Mutation: IMutation = {
 
         const serverOptions: any = sessionInfo.session.request.serverOptions;
 
-        const usersProvider = context.injector.get(UsersProvider);
+        const usersProvider: UsersProvider = context.injector.get(UsersProvider);
 
         const cognitoOptions: any = {
             UserPoolId: serverOptions.cognitoUserPoolId,
@@ -81,7 +81,7 @@ export const Mutation: IMutation = {
 
         const serverOptions: any = sessionInfo.session.request.serverOptions;
 
-        const usersProvider = context.injector.get(UsersProvider);
+        const usersProvider: UsersProvider = context.injector.get(UsersProvider);
 
         const code = args.code;
         const email = args.email;

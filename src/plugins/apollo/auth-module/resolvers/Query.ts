@@ -1,7 +1,7 @@
 import { ModuleContext, ModuleSessionInfo } from '@graphql-modules/core';
 import { responseType } from '@masteryo/masteryo-utils';
 import { Cognito } from '@masteryo/masteryo-cognito';
-import { UsersProvider } from '../../../../masteryo-gql-core-providers/users';
+import { UsersProvider } from '@masteryo/masteryo-gql-core-providers';
 
 export interface IQuery {
     signIn: object,
@@ -36,7 +36,6 @@ export const Query: IQuery = {
             console.log(responseType.failed, e);
             return responseType.failed;
         }
-
 
         const usersProvider: UsersProvider = context.injector.get(UsersProvider);
 
