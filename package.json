@@ -29,7 +29,7 @@
     "@hapi/hapi": "^18.4.1",
     "@masteryo/masteryo-cognito": "^1.0.0",
     "@masteryo/masteryo-dynamodb-mapper": "^1.0.2",
-    "@masteryo/masteryo-gql-core-providers": "^1.0.5",
+    "@masteryo/masteryo-gql-core-providers": "^1.0.6",
     "@masteryo/masteryo-hapi-cognito-auth": "^1.0.7",
     "@masteryo/masteryo-utils": "^1.0.3",
     "apollo-server-hapi": "^2.12.0",
