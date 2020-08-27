@@ -2,7 +2,7 @@
   "name": "@masteryo/gql-apollo-auth-service",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "directories": {
     "dist": "dist"
   },
@@ -14,9 +14,13 @@
     "url": "git+ssh://git@github.com:yohioy/gql-apollo-auth-service.git"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run copy:graphql-files && npm run copy:files && npm run copy:docker",
     "prebuild": "rm -rf ./dist",
-    "start": "ts-node src/index.ts"
+    "start:deployed": "node dist/index.js",
+    "start": "ts-node src/index.ts",
+    "copy:files": "cp 'package.json' 'dist' && cp '.env' 'dist'",
+    "copy:docker": "cp 'Dockerfile' 'dist' && cp '.dockerignore' 'dist'",
+    "copy:graphql-files": "cd src/ && copyfiles plugins/**/**/*.graphql ../dist/"
   },
   "author": "yohantha@gmail.com",
   "license": "ISC",
