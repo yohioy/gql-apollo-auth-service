@@ -1,0 +1,13 @@
+version: '3'
+services:
+  gqlauth:
+    container_name: gqlauth
+    build: .
+    ports:
+      - "4022:4022"
+    networks:
+      - gql-network
+networks:
+  gql-network:
+    external:
+      name: gql-apollo-db_gql-network
