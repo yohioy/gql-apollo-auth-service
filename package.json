@@ -14,12 +14,13 @@
     "url": "git+ssh://git@github.com:yohioy/gql-apollo-auth-service.git"
   },
   "scripts": {
+    "npm:install": "npm install",
     "build": "tsc && npm run copy:graphql-files && npm run copy:files && npm run copy:docker",
     "prebuild": "rm -rf ./dist",
-    "start:deployed": "node dist/index.js",
+    "start:deployed": "node index.js",
     "start": "ts-node src/index.ts",
     "copy:files": "cp 'package.json' 'dist' && cp '.env' 'dist'",
-    "copy:docker": "cp 'Dockerfile' 'dist' && cp '.dockerignore' 'dist'",
+    "copy:docker": "cp 'Dockerfile' 'dist' && cp '.dockerignore' 'dist' && cp 'docker-compose.yml' 'dist'",
     "copy:graphql-files": "cd src/ && copyfiles plugins/**/**/*.graphql ../dist/"
   },
   "author": "yohantha@gmail.com",
