@@ -19,7 +19,9 @@ export default {
           cognitoUserPoolId: process.env.COGNITO_USER_POOL_ID,
           cognitoClientId: process.env.COGNITO_CLIENT_ID,
           dbRegion:process.env.DB_REGION,
-          dbEndpoint:process.env.DB_ENDPOINT
+          dbEndpoint:process.env.DB_ENDPOINT,
+          dbAccessKeyId:process.env.DB_ACCESS_KEY_ID,
+          dbSecretAccessKey:process.env.DB_SECRET_ACCESS_KEY,
         }
       }
     ]
