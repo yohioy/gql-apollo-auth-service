@@ -4,20 +4,12 @@ API_AUTH_KEY=ABCXYZ
 
 ############
 ## Cognito
-COGNITO_USER_POOL_ID=
-COGNITO_CLIENT_ID=
+COGNITO_USER_POOL_ID=eu-west-1_vNRBVWzxc
+COGNITO_CLIENT_ID=4f3fa651j1r0csnedktjlklv7i
 COGNITO_REGION=eu-west-1
 
 #######################################
 #
-# AWS
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-
-#######################################
-#
 # DYNAMODB
-DB_REGION=localhost
-DB_ENDPOINT=http://172.20.0.2:12008
-#DB_ACCESS_KEY_ID=
-#DB_SECRET_ACCESS_KEY=
+DB_REGION=
+DB_ENDPOINT=
