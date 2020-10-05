@@ -1,6 +1,6 @@
 FROM mhart/alpine-node:12
 
-WORKDIR /opt/app
+WORKDIR /usr/src/app
 
 COPY . .
 
@@ -9,7 +9,7 @@ RUN npm ci
 RUN npm run build
 
 COPY package.json ./dist
-COPY .default ./dist/.env
+COPY .default ./.env
 COPY src/plugins/apollo/auth-module/*.graphql ./dist/plugins/apollo/auth-module/
 
 EXPOSE 4022
