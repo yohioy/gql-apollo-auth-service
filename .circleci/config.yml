@@ -15,7 +15,8 @@ workflows:
           path: .
           region: AWS_REGION
           repo: gql-auth
-          tag: "$CIRCLE_SHA1"
+          skip-when-tags-exist: false
+          tag: 'latest'
           filters:
             branches:
               only:
