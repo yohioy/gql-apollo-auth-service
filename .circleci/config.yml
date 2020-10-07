@@ -25,4 +25,4 @@ workflows:
             - aws-ecr/build-and-push-image
           family: 'auth-task'
           cluster-name: 'gql-cluster'
-          container-image-name-updates: 'container=gql-auth,tag=latest'
+          container-image-name-updates: 'container=auth-task,tag=latest'
