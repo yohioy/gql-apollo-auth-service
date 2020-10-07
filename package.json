@@ -34,7 +34,7 @@
     "@hapi/glue": "^7.0.0",
     "@hapi/hapi": "^18.4.1",
     "@masteryo/masteryo-cognito": "^1.0.0",
-    "@masteryo/masteryo-dynamodb-mapper": "^1.0.2",
+    "@masteryo/masteryo-dynamodb-mapper": "^1.0.4",
     "@masteryo/masteryo-gql-core-providers": "^1.0.9",
     "@masteryo/masteryo-hapi-cognito-auth": "^1.0.9",
     "@masteryo/masteryo-utils": "^1.0.3",

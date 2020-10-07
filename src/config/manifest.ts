@@ -22,6 +22,7 @@ export default {
           dbEndpoint:process.env.DB_ENDPOINT,
           dbAccessKeyId:process.env.DB_ACCESS_KEY_ID,
           dbSecretAccessKey:process.env.DB_SECRET_ACCESS_KEY,
+          dbTableNamePrefix:process.env.DB_TABLE_NAME_PREFIX,
         }
       }
     ]

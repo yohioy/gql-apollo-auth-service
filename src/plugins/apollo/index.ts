@@ -26,11 +26,12 @@ const register = async(server: Server, options): Promise<void> => {
 
       // Add Data mapper
       session.request.dataMapper = dataMapper({
-        region: options.dbRegion,
-        endpoint: (options.dbEndpoint) ? options.dbEndpoint : null,
-        accessKeyId: (options.dbAccessKeyId) ? options.dbAccessKeyId : null,
-        secretAccessKey: (options.dbSecretAccessKey) ? options.dbSecretAccessKey : null,
-      });
+            region: options.dbRegion,
+            endpoint: (options.dbEndpoint) ? options.dbEndpoint : null,
+            accessKeyId: (options.dbAccessKeyId) ? options.dbAccessKeyId : null,
+            secretAccessKey: (options.dbSecretAccessKey) ? options.dbSecretAccessKey : null,
+          },
+          options.dbTableNamePrefix);
 
       return session;
     },
