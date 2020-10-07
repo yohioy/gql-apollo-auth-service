@@ -11,6 +11,6 @@ COGNITO_REGION=eu-west-1
 #######################################
 #
 # DYNAMODB
-DB_REGION=
+DB_REGION=eu-west-1
 DB_ENDPOINT=
 DB_TABLE_NAME_PREFIX=dev_
