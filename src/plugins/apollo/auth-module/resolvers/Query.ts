@@ -1,7 +1,10 @@
+import crypto from "crypto";
 import { ModuleContext, ModuleSessionInfo } from '@graphql-modules/core';
 import { responseType } from '@masteryo/masteryo-utils';
 import { Cognito } from '@masteryo/masteryo-cognito';
 import { UsersProvider } from '@masteryo/masteryo-gql-core-providers';
+
+import { Encryption } from '../../../../../shared/encryption';
 
 export interface IQuery {
     signIn: object,
@@ -41,11 +44,15 @@ export const Query: IQuery = {
 
         try {
             await usersProvider.getUser(authUserResponse.sub);
-            return { ...responseType.success, ...{ token:authUserResponse.accessToken } };
         } catch (e) {
             console.log(responseType.failed, e);
             return responseType.failed;
         }
+
+        console.log(authUserResponse.accessToken);
+        const encryptedToken = Encryption.encryptToken(authUserResponse.accessToken, serverOptions.rsaPublicKey);
+
+        return { ...responseType.success, ...{ token: encryptedToken } };
     },
     signOut: async () => {
 

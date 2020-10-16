@@ -4,6 +4,7 @@ import { buildFederatedSchema } from '@apollo/federation';
 import { Server } from '@hapi/hapi';
 import { AuthModule } from './auth-module';
 import { dataMapper } from '@masteryo/masteryo-dynamodb-mapper';
+import { Encryption } from '../../../shared/encryption';
 
 const register = async(server: Server, options): Promise<void> => {
 
@@ -14,7 +15,7 @@ const register = async(server: Server, options): Promise<void> => {
       const apiKey = session.request.headers['x-api-key'];
 
       if (!apiKey) {
-        throw new AuthenticationError('No Auth credentials');
+        throw new AuthenticationError('No API credentials');
       }
 
       if(options.apiAuthKey !== apiKey) {

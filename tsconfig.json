@@ -4,7 +4,7 @@
     "module": "commonjs",
     "outDir": "./dist",
     "rootDir": "src",
-    "baseUrl": ".",
+    "baseUrl": "./",
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
@@ -15,11 +15,14 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "types": ["node"],
-    "paths": {
+    /*"paths": {
       "*": [
-        "node_modules/*",
-        "types/*"
+        "node_modules*//*",
+        "types*//*"
       ]
+    },*/
+    "paths": {
+      "@shared/*": ["shared/*"]
     }
   },
   "include": [
