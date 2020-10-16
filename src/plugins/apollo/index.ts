@@ -4,7 +4,6 @@ import { buildFederatedSchema } from '@apollo/federation';
 import { Server } from '@hapi/hapi';
 import { AuthModule } from './auth-module';
 import { dataMapper } from '@masteryo/masteryo-dynamodb-mapper';
-import { Encryption } from '../../../shared/encryption';
 
 const register = async(server: Server, options): Promise<void> => {
 
