@@ -3,8 +3,7 @@ import { ModuleContext, ModuleSessionInfo } from '@graphql-modules/core';
 import { responseType } from '@masteryo/masteryo-utils';
 import { Cognito } from '@masteryo/masteryo-cognito';
 import { UsersProvider } from '@masteryo/masteryo-gql-core-providers';
-
-import { Encryption } from '../../../../../shared/encryption';
+import { Encryption } from '@masteryo/masteryo-encryption';
 
 export interface IQuery {
     signIn: object,
@@ -49,7 +48,6 @@ export const Query: IQuery = {
             return responseType.failed;
         }
 
-        console.log(authUserResponse.accessToken);
         const encryptedToken = Encryption.encryptToken(authUserResponse.accessToken, serverOptions.rsaPublicKey);
 
         return { ...responseType.success, ...{ token: encryptedToken } };
