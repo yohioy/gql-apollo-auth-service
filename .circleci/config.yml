@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   aws-ecr: circleci/aws-ecr@7.3.0
-#  aws-ecs: circleci/aws-ecs@0.0.10
+  aws-ecs: circleci/aws-ecs@0.0.10
 workflows:
   build_and_push_image:
     jobs:
@@ -22,9 +22,9 @@ workflows:
             branches:
               only:
                 - master
-#      - aws-ecs/deploy-service-update:
-#          requires:
-#            - aws-ecr/build-and-push-image
-#          family: 'gql-auth-service'
-#          cluster-name: 'gql-cluster'
-#          container-image-name-updates: 'container=gql-auth-container,tag=latest'
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: 'gql-auth-service'
+          cluster-name: 'gql-cluster'
+          container-image-name-updates: 'container=gql-auth-container,tag=latest'
