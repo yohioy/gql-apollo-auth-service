@@ -12,10 +12,12 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           create-repo: true
           dockerfile: Dockerfile
+          no-output-timeout: 20m
           path: .
           region: AWS_REGION
           repo: gql-auth
           tag: 'latest'
+          skip-when-tags-exist: false
           filters:
             branches:
               only:
